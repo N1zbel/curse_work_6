@@ -1,0 +1,12 @@
+{% extends "main/base.html" %}
+{% block title %} Блог {{ object.title }} {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>{{ object.title }}</h1>
+    <p>Дата создания : {{ object.date_of_creation }}</p>
+    <p>Описание : {{ object.content }}</p>
+    <p>Просмотры : {{ object.views_count }}</p>
+
+<a class="p-2 btn btn-lg btn-primary" href="/blog">Назад</a>
+</div>
+{% endblock %}

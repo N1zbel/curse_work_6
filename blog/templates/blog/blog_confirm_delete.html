@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+{% block title %} Удаление блога {{ object.title }} {% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <form method="post">
+                            <p>Вы точно хотите удалить Блог '{{ object.title }}'? </p>
+                            <button type="submit" class="btn btn-danger">
+                                Подтвердить
+                            </button>
+
+                            <a class="p-2 btn btn-outline-primary" href="/blog/">Отменить</a>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

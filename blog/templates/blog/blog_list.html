@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+{% block title %} Блог {% endblock %}
+{% load my_tags %}
+{% block content %}
+<div class="container mt-5">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-12">
+        <a class="btn btn-primary btn-block" href="{% url 'blog:create' %}">Добавить запись</a>
+      </div>
+    </div>
+    <h1>Список блоговых записей</h1>
+
+    <div class="row">
+      {% for post in posts %}
+      <div class="col-md-12 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title"><a href="{% url 'blog:view' post.pk %}">{{ post.title }}</a></h2>
+            <p class="card-text">{{ post.content }}</p>
+            <a href="{% url 'blog:detail' post.slug %}">
+              <img alt="Превью" class="img-fluid" src="{% mediafile post.preview_img %}" />
+            </a>
+            <p class="card-text">Просмотры: {{ post.views_count }}</p>
+            <div class="btn-group" role="group">
+              <a href="{% url 'blog:view' post.pk %}" class="btn btn-primary">Подробнее</a>
+              <a href="{% url 'blog:update' post.pk %}" class="btn btn-success">Редактировать</a>
+              <a href="{% url 'blog:delete' post.pk %}" class="btn btn-danger">Удалить</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-md-12 text-center">
+        <p>Пока нет ни одной записи.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
