@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block title %} Верификация {% endblock %}
+{% block content %}
+
+
+<body>
+<div class="row justify-content-center">
+     <div class="col-4">
+          <div class="card">
+    <h1>Введите код верификации</h1>
+
+        <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-success">Подтвердить</button>
+
+{% if form.errors %}
+    <div class="alert alert-danger">
+        {{ form.errors.verification_code }}
+    </div>
+{% endif %}
+    </form>
+</div>
+         </div>
+    </div>
+</body>
+</html>
+{% endblock %}
