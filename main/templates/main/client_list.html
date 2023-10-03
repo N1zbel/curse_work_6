@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+<div class="container">
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-12">
+    {% if user.is_authenticated %}
+
+            <h2>Список клиентов</h2>
+            <a class="btn btn-primary" href="{% url 'main:client_create' %}">Добавить клиента</a>
+            <hr>
+        </div>
+    {% endif %}
+    <ul>
+
+        {% for client in clients %}
+            {{ client.full_name }} ({{ client.email }})
+        {% if user.is_authenticated %}
+        <a class="btn btn-danger" href="{% url 'main:client_delete' client.pk %}">Удалить</a>
+                    <a class="btn btn-success" href="{% url 'main:client_update' client.pk %}">Редактировать</a>
+
+        <hr>
+        {% endif %}
+         {% empty %}
+      <li class="list-group-item text-center">Пока нет ни одного клиента.</li>
+        {% endfor %}
+    </ul>
+
+</div>
+    </div>
+            </div>
+{% endblock %}

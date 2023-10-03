@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-12">
+                <h2>Детали рассылки</h2>
+                <p>Номер рассылки: {{ mailing.id }}</p>
+                <p>Вермя старта: {{ mailing.time_to_send }}</p>
+                <p>Время конца: {{ mailing.end_time }}</p>
+                {% for message in messages %}
+                <p>Message ID: {{ message.id }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

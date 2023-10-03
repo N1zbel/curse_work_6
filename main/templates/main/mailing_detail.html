@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-12">
+        <h2>Детали рассылки</h2>
+        <p>Номер рассылки: {{ mailing.id }}</p>
+        <p>Время старта: {{ mailing.time_to_send }}</p>
+        <p>Время конца: {{ mailing.end_time }}</p>
+        <h3>Сообщения в рассылке:</h3>
+        <ul class="list-group">
+          {% for message in messages %}
+          <li class="list-group-item">
+              <p>Тема : {{ message.body }}</p>
+            <p>Сообщение : {{ message.subject }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="mt-3">
+          <a class="btn btn-danger" href="{% url 'main:delete' mailing.pk %}">Удалить</a>
+          <a class="btn btn-outline-primary" href="{% url 'main:update' mailing.pk %}">Редактировать</a>
+          <a class="btn btn-primary" href="{% url 'main:mailing' %}">К рассылкам</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

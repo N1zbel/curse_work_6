@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+
+<form method="post">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-12">
+                    <h2>создание сообщения</h2>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Создать сообщение</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+{% endblock %}
